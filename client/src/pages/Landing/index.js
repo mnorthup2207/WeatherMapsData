@@ -7,7 +7,7 @@ import './style.css'
 
 const images = [
     {
-        title: 'Welcome to AgEagle',
+        title: 'Simple [ Weather | Maps | Data ]',
         width: '100%',
     }
 ];
