@@ -7,4 +7,4 @@ export default {
     search: function(num) {
       return axios.get(BASEURL + num + type);
     }
-  };
+};

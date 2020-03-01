@@ -4,6 +4,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import './style.css';
 import WeatherCardMap from '../../components/WeatherCardMap';
+import WeatherData from '../../components/WeatherData';
+import SearchCard from "../../components/Search";
 import API from '../../utils/RandomAPI'
 import CoordinatesContext from '../../utils/CoordinatesContext'
 
@@ -13,10 +15,10 @@ const Weather = () => {
         coordinateObj: undefined,
     })
     const { searchNum } = data;
-            //sm    //lrg
+    //sm    //lrg
     const latitude_longitude = [];
     const finalCoordinates = [];
-    
+
     useEffect(() => {
         const searchRandomLatLong = () => {
             API.search(searchNum)
@@ -29,25 +31,35 @@ const Weather = () => {
                     const randMin = () => Math.floor(Math.random() * (1 - 3))
                     // const randMax = () => Math.floor(Math.random() * 100)
                     const randMultiplyer = () => Math.floor(Math.random() * randMin())
-                    latitude_longitude.sort((a, b) => finalCoordinates.push({ 
-                            key: randomIndex(),
-                            latitude: a ,
-                            longitude: b * randMultiplyer()
-                        }
+                    latitude_longitude.sort((a, b) => finalCoordinates.push({
+                        key: randomIndex(),
+                        latitude: a,
+                        longitude: b * randMultiplyer()
+                    }
                     ));
                     setData({ ...data, coordinateObj: finalCoordinates })
                 })
                 .catch(err => console.log(err));
         };
-        searchRandomLatLong();        
-    }, []); 
+        searchRandomLatLong();
+    }, []);
     return (
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-                <h1>Simple [ Weather | Maps | Data ]</h1>
+                <h1><a href={'/'}>Simple</a> [ Weather | Maps | Data ]</h1>
                 <CoordinatesContext.Provider value={data}>
-                    <WeatherCardMap />
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <SearchCard />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <WeatherCardMap />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <WeatherData />
+                        </Grid>
+                    </Grid>
                 </CoordinatesContext.Provider>
             </Container>
         </React.Fragment>

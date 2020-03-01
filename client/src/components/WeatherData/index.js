@@ -1,11 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import MapCard from '../Map'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import './style.css'
-
-
+import API from '../../utils/WeatherAPI';
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -24,16 +21,28 @@ const useStyles = makeStyles({
     },
 });
 
-const WeatherCardMap = () => {    
+const WeatherCardData = () => {
     const classes = useStyles();
+    // API.search(-52.435, 32.744)
+    // .then(res => {
+    //     console.log(res);
+    // })
+    // .catch(err => console.log(err))
+    const API_Key = process.env.API_KEY;
+    const lat = -52.435;
+    const lon = 32.744;
+    const BASEURL = `https://api.openweathermap.org/data/2.5/weather?lat=`
+    const shortStr = `&lon=`
+    const api = `&appid=${API_Key}`
+    console.log(BASEURL + lat + shortStr + lon + api);
 
     return (
         <Card className={classes.root}>
             <CardContent id="noPadding">
-                <MapCard/>
+                <h1>Hell Yea Weather Data!!</h1>
             </CardContent>
         </Card>
     );
 };
 
-export default WeatherCardMap;
+export default WeatherCardData;

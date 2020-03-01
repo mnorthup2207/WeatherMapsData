@@ -14,6 +14,8 @@ const MapCard = () => {
         width: '100%',
         height: '100%'
     })  
+    console.log(coordinateObj);
+    
     return (
         <ReactMapGl
             {...viewport}
