@@ -7,33 +7,35 @@ import './style.css'
 
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-    maxHeight: 350,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+    root: {
+        minWidth: 275,
+        maxHeight: 350,
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
 });
 
-const WeatherCardMap = (props) => {
-  const classes = useStyles();
+const WeatherCardMap = (props) => {    
+    const classes = useStyles();
 
-  return (
-    <Card className={classes.root}>
-      <CardContent id="noPadding">
-        <MapCard {...props}/>
-      </CardContent>
-    </Card>
-  );
+    return (
+        <Card className={classes.root}>
+            <CardContent id="noPadding">
+                <MapCard 
+                data={props}
+                />
+            </CardContent>
+        </Card>
+    );
 };
 
 export default WeatherCardMap;
