@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 const useStyles1 = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120,
+        minWidth: '100%',
         width: '100%',
     },
     selectEmpty: {
@@ -65,7 +65,7 @@ const SearchCard = () => {
         <Card className={classs.root} variant="outlined">
             <CardContent>
                 <Grid container spacing={3}>
-                    <Grid item xs={4}>
+                    <Grid item xs={12}>
                         <FormControl variant="outlined" className={classes.formControl}>
                             <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
                                 Select Number of Coordinates

@@ -10,25 +10,29 @@ mongoose.connect(
 
 const pointSeed = [
     {
-        name: "Pryazha",
-        weatherDes: "light rain",
-        Temp: "35.6",
-        Humidity: "93",
-        windSpeed: "15.66",
-        localRise: "Sun Mar 01 2020 21:44:02 GMT-0700",
-        localSet: "Mon Mar 02 2020 08:12:30 GMT-0700"
+        _id: "5e5ccc02737b4655cc942f79",
+        name: "El Borma",
+        weatherDes: "scattered clouds",
+        temp: "71.74",
+        humidity: "15",
+        windSpeed: "5.5",
+        localRise: "1583128480",
+        localSet: "1583170080",
+        lat: "31.366",
+        lon: "7.731",
     },
     {
-        name: "Smooth Rock Falls",
+        _id: "5e5ccca7d7ef2a50e06eab25",
+        name: "Severo-Yeniseyskiy",
         weatherDes: "overcast clouds",
-        Temp: "32",
-        Humidity: "94",
-        windSpeed: "17.22",
-        localRise: "Mon Mar 02 2020 05:06:25 GMT-0700",
-        localSet: "Mon Mar 02 2020 16:11:10 GMT-0700"
-    },
-    
-
+        temp: "16.92",
+        humidity: "91",
+        windSpeed: "10.09",
+        localRise: "1583109842",
+        localSet: "1583147486",
+        lat: "61.613",
+        lon: "93.644",
+    }
 ];
 
 db.Coordinates

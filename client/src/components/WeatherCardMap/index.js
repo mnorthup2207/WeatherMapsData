@@ -11,10 +11,11 @@ import './style.css'
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 275,
+        minWidth: '50vw',
         minHeight: '50vh',
         maxHeight: '75vh',
-        // height: '100vh'
+        maxWidth: '75vw'
+        
     },
     bullet: {
         display: 'inline-block',
@@ -42,9 +43,7 @@ const WeatherCardMap = () => {
         const searchRandomLatLong = () => {
             API.search(amount)
                 .then(res => {
-                    const coordinates = res.data.data;
-                    console.log(coordinates);
-                    
+                    const coordinates = res.data.data;                    
                     const getRandomInt = () => Math.floor(Math.random() * 7);
                     const minusPlus = ['-', '', '-', '', '-', '', '-', ''];
                     coordinates.map(num => latitude_longitude.push(`${minusPlus[getRandomInt()]}${num}` / 1000));

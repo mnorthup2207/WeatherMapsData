@@ -10,7 +10,14 @@ const Weather = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-                <h1><a href={'/'}>Simple</a> [ Weather | Maps | Data ]</h1>
+                <Grid container direction="row" justify="space-evenly">
+                    <Grid item xs={6}>
+                        <h1><a href={'/'}>Simple</a> [ Weather | Maps | Data ]</h1>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <h1 id="align"><a href={'/saved-points'}>Saved Points</a></h1>
+                    </Grid>
+                </Grid>
                 <Grid item xs={12}>
                     <SearchCard />
                 </Grid>

@@ -9,6 +9,8 @@ const coordinatesSchema = new Schema({
     windSpeed: { type: String },
     localRise: { type: String },
     localSet: { type: String },
+    lat: { type: String },
+    lon: { type: String },
 });
 
 const Coordinates = mongoose.model("Coordinates", coordinatesSchema);
