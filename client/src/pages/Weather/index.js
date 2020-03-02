@@ -4,7 +4,6 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import './style.css';
 import WeatherCardMap from '../../components/WeatherCardMap';
-import WeatherData from '../../components/WeatherData';
 import SearchCard from "../../components/Search";
 import API from '../../utils/RandomAPI'
 import CoordinatesContext from '../../utils/CoordinatesContext'
@@ -18,7 +17,6 @@ const Weather = () => {
     //sm    //lrg
     const latitude_longitude = [];
     const finalCoordinates = [];
-
     useEffect(() => {
         const searchRandomLatLong = () => {
             API.search(searchNum)
@@ -49,17 +47,14 @@ const Weather = () => {
             <Container maxWidth="lg">
                 <h1><a href={'/'}>Simple</a> [ Weather | Maps | Data ]</h1>
                 <CoordinatesContext.Provider value={data}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <SearchCard />
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <SearchCard />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <WeatherCardMap />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <WeatherCardMap />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <WeatherData />
-                        </Grid>
-                    </Grid>
                 </CoordinatesContext.Provider>
             </Container>
         </React.Fragment>

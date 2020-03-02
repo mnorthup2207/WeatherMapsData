@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CoordinatesContext = React.createContext({
-    searchNum: 4,
+    searchNum: 10,
     coordinateObj: undefined,
 });
 

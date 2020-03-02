@@ -1,47 +1,49 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import React, { useContext, useEffect, useState } from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import API from '../../utils/WeatherAPI';
-const useStyles = makeStyles({
-    root: {
-        minWidth: 275,
-        maxHeight: 350,
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-});
+import SelectedContext from '../../utils/SelectedContext';
 
 const WeatherCardData = () => {
-    const classes = useStyles();
-    // API.search(-52.435, 32.744)
-    // .then(res => {
-    //     console.log(res);
-    // })
-    // .catch(err => console.log(err))
-    const API_Key = process.env.API_KEY;
-    const lat = -52.435;
-    const lon = 32.744;
-    const BASEURL = `https://api.openweathermap.org/data/2.5/weather?lat=`
-    const shortStr = `&lon=`
-    const api = `&appid=${API_Key}`
-    console.log(BASEURL + lat + shortStr + lon + api);
+    const { key, latitude, longitude } = useContext(SelectedContext);
+    const lat = latitude
+    const lon = longitude
+    const api = "&appid=718a19e59fe8c687c0ff168450145d0e&units=imperial"
+    const [weather, setWeather] = useState({
 
+    })
+    const { name, weatherDes, icon, temp, humidity, windSpeed, timeZone, localRise, localSet } = weather;
+    useEffect(() => {
+        const weatherData = () => {
+            API.search(lat, lon, api)
+                .then(res => {
+                    setWeather({
+                        name: res.data.name,
+                        weatherDes: res.data.weather[0].description,
+                        icon: res.data.weather[0].icon,
+                        temp: res.data.main.temp,
+                        humidity: res.data.main.humidity,
+                        windSpeed: res.data.wind.speed,
+                        timeZone: res.data.timezone,
+                        localRise: res.data.sys.sunrise,
+                        localSet: res.data.sys.sunset,
+                    });
+                })
+                .catch(err => console.log(err));
+        };
+        weatherData();
+    }, [key]);
     return (
-        <Card className={classes.root}>
-            <CardContent id="noPadding">
-                <h1>Hell Yea Weather Data!!</h1>
-            </CardContent>
-        </Card>
+        <>
+            <h1><strong>{name ? name : 'Unknown Location'}</strong></h1>
+            <h2>Current Weather: {weatherDes}</h2>
+            <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+            <h2>Temp: {temp}°</h2>
+            <h2>Humidity: {humidity}%</h2>
+            <h2>Wind Speed: {windSpeed}</h2>
+            <h2>Local Sunrise: <Moment unix>{localRise}</Moment></h2>
+            <h2>Local Sunset: <Moment unix>{localSet}</Moment></h2>
+        </>
     );
 };
 
