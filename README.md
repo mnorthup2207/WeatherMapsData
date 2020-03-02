@@ -2,7 +2,7 @@
 
 **A proof of concept for utilizing the Open Weather API, the ANU Quantum Random Numbers Server, and Mapbox to create a Full Stack MERN application in REACT. The application first loads to a blank map and a dropdown down menu. From there the user can select their desired amount of coordinates randomly returned from [Quantum](https://qrng.anu.edu.au/API/api-demo.php). After returning the API call MapBox-GL plots the resulting coordinates. THe user can then click a map pin and a modal will display the pins latitude, longitude and several weather data points. User can then save the item to the backend MongoDB database or simply click another. From that point the user can click the Saved Points link which will then load the the saved items from the database. User can decide to delete data as choosing**
 
-![Demo](./client/public/simple.webm)
+![Demo](./client/public/simple.gif)
 
 ## Getting Started
  After forking or doing a git pull, you will need to run a npm i package.json. This will install the major dependencies for both package.jsons. 
