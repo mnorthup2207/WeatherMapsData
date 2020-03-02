@@ -10,7 +10,7 @@ mongoose.connect(
 
 const pointSeed = [
     {
-        _id: "5e5ccc02737b4655cc942f79",
+        _id: 'ObjectId("5e5ccc02737b4655cc942f79")',
         name: "El Borma",
         weatherDes: "scattered clouds",
         temp: "71.74",
@@ -22,7 +22,7 @@ const pointSeed = [
         lon: "7.731",
     },
     {
-        _id: "5e5ccca7d7ef2a50e06eab25",
+        _id: 'ObjectId("5e5ccca7d7ef2a50e06eab25")',
         name: "Severo-Yeniseyskiy",
         weatherDes: "overcast clouds",
         temp: "16.92",
