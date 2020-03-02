@@ -12,6 +12,7 @@ import './style.css'
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
+        minHeight: '50vh',
         maxHeight: '75vh',
         // height: '100vh'
     },
@@ -42,6 +43,8 @@ const WeatherCardMap = () => {
             API.search(amount)
                 .then(res => {
                     const coordinates = res.data.data;
+                    console.log(coordinates);
+                    
                     const getRandomInt = () => Math.floor(Math.random() * 7);
                     const minusPlus = ['-', '', '-', '', '-', '', '-', ''];
                     coordinates.map(num => latitude_longitude.push(`${minusPlus[getRandomInt()]}${num}` / 1000));
