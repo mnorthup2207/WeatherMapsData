@@ -41,7 +41,7 @@ REACT_APP_MAPBOX_TOKEN=" ";
 * [MomentJS](https://mongoosejs.com/) - Moment Js timestamp converter
 
 ## Author
-* **McCabe Northup** - *Initial work* - [mnorthup2207](https://github.com/mnorthup2207)
+* **McCabe Northup** - *Full Stack Web Developer* - [mnorthup2207](https://github.com/mnorthup2207)
 
 
 
