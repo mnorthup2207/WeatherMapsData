@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import WeatherCardMap from '../WeatherCardMap'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
@@ -7,12 +8,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import NumberContext from '../../utils/NumberContext';
 import './style.css';
-import CoordinatesContext from '../../utils/CoordinatesContext';
 
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
+        height: '85vh'
     },
     bullet: {
         display: 'inline-block',
@@ -45,27 +47,25 @@ const useStyles1 = makeStyles(theme => ({
 ));
 
 const SearchCard = () => {
-    const { searchNum } = useContext(CoordinatesContext);
     const classs = useStyles();
     const classes = useStyles1();
     const [num, setNum] = useState({
-        searchNum: searchNum
+        amount: ''
     });
-
     const inputLabel = React.useRef(null);
     const [labelWidth, setLabelWidth] = useState(0);
     React.useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
-    
+
     const handleChange = event => {
-        setNum(event.target.value); 
+        setNum({ amount: event.target.value });
     };
     return (
         <Card className={classs.root} variant="outlined">
             <CardContent>
                 <Grid container spacing={3}>
-                    <Grid id="orItem" item xs={4}>
+                    <Grid item xs={4}>
                         <FormControl variant="outlined" className={classes.formControl}>
                             <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
                                 Select Number of Coordinates
@@ -73,7 +73,7 @@ const SearchCard = () => {
                             <Select
                                 labelId="demo-simple-select-outlined-label"
                                 id="demo-simple-select-outlined"
-                                value={num}
+                                value={num.amount}
                                 onChange={handleChange}
                                 labelWidth={labelWidth}
                             >
@@ -93,6 +93,11 @@ const SearchCard = () => {
                             </Select>
                         </FormControl>
                     </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <NumberContext.Provider value={num}>
+                        <WeatherCardMap />
+                    </NumberContext.Provider>
                 </Grid>
             </CardContent>
         </Card>

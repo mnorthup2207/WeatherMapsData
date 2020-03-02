@@ -40,13 +40,11 @@ const MapCard = () => {
         setOpen(false);
     };
     //
-
-
     const { coordinateObj } = useContext(CoordinatesContext);
     const [viewport, setViewport] = useState({
-        latitude: -36.80210522794043,
-        Longitude: -1.4228680417115551,
-        zoom: 1.6208613380939745,
+        latitude: 0,
+        Longitude: 9.555934599642512,
+        zoom: 1,
         width: '100%',
         height: '100%'
     })
@@ -83,15 +81,7 @@ const MapCard = () => {
                             <RoomIcon />
                         </button>
                     </Marker>
-                ))) : (
-                        <Marker
-                            key={12345}
-                            latitude={49.2771852}
-                            longitude={-0.71916}
-                        >
-                            <RoomIcon />
-                        </Marker>
-                    )}
+                ))) : null}
             </ReactMapGl>
             <div>
                 <Modal

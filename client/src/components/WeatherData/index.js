@@ -12,7 +12,7 @@ const WeatherCardData = () => {
     const [weather, setWeather] = useState({
 
     })
-    const { name, weatherDes, icon, temp, humidity, windSpeed, timeZone, localRise, localSet } = weather;
+    const { name, weatherDes, icon, temp, humidity, windSpeed, localRise, localSet } = weather;
     useEffect(() => {
         const weatherData = () => {
             API.search(lat, lon, api)
@@ -24,7 +24,6 @@ const WeatherCardData = () => {
                         temp: res.data.main.temp,
                         humidity: res.data.main.humidity,
                         windSpeed: res.data.wind.speed,
-                        timeZone: res.data.timezone,
                         localRise: res.data.sys.sunrise,
                         localSet: res.data.sys.sunset,
                     });
@@ -32,12 +31,12 @@ const WeatherCardData = () => {
                 .catch(err => console.log(err));
         };
         weatherData();
-    }, [key]);
+    }, [key, lat, lon]);
     return (
         <>
             <h1><strong>{name ? name : 'Unknown Location'}</strong></h1>
             <h2>Current Weather: {weatherDes}</h2>
-            <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+            <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={weatherDes}/>
             <h2>Temp: {temp}°</h2>
             <h2>Humidity: {humidity}%</h2>
             <h2>Wind Speed: {windSpeed}</h2>
